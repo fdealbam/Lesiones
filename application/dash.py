@@ -572,12 +572,13 @@ body = html.Div([
      dbc.Row(
            [
                dbc.Col(dbc.Button(([html.P("México", style={"font-size": 30,"color": "black","background-color": "white"}),
-                       dbc.CardImg(src="https://github.com/fdealbam/Aborto/blob/main/application/static/mx.jpeg?raw=true",
+                       dbc.CardImg(src="https://github.com/fdealbam/Lesiones/blob/main/application/static/mx.jpeg?raw=true",
                   style={'size': 2,}),
                           html.P(
-                          "Los 10 municipios con más aborto fueron: Ecatepec de Morelos (75), Chimalhuacán (68), La Paz (62)"
-                              ", Nezahualcóyotl (49), Ixtapaluca (43), Chalco (41), Valle de Chalco Solidaridad (30),"
-                              " Naucalpan de Juárez (30), Cuautitlán (28) y Toluca (26).",
+                          "Los diez municipios con más lesiones fueron: Ecatepec de Morelos (39,422),"
+                            "Toluca (28,680), Nezahualcóyotl (21,792), Naucalpan de Juárez (21,297), "
+                            "Tlalnepantla de Baz (17,222), Chimalhuacán (12,112), Cuautitlán Izcalli (11,950),"
+                            "Atizapán de Zaragoza (11,869), Chalco (11,294), y Ixtapaluca (10,709).",
                      style={'font-size': 14, "font-family":"Arial", "text-align":"justify" }),
                ]), style={"background-color":"white",
                          "box-shadow": "10px 20px 30px black",
@@ -586,13 +587,11 @@ body = html.Div([
                          
                          }, disabled=True)),
                
-               dbc.Col(dbc.Button(([html.P("Ciudad de México", style={"font-size": 30,"color": "black","background-color": "white"}),
-                       dbc.CardImg(src="https://github.com/fdealbam/Aborto/blob/main/application/static/cdmx.jpeg?raw=true",
+               dbc.Col(dbc.Button(([html.P("Guanajuato", style={"font-size": 30,"color": "black","background-color": "white"}),
+                       dbc.CardImg(src="https://github.com/fdealbam/Lesiones/blob/main/application/static/guanajuato.jpeg?raw=true",
                                     style={'size': 2,}),
                        html.P(
-                           "Las 10 alcaldías con más aborto fueron: Iztapalapa (138), Gustavo A. Madero (112), Álvaro Obregón (77)"
-                           ", Venustiano Carranza (64), Tlalpan (50), Cuauhtémoc (45), Tláhuac (28), Miguel Hidalgo (27), Iztacalco (26)"
-                           " y Xochimilco (22)..",
+                           "Los diez municipios con más lesiones fueron: León (18,283), Irapuato (9,255), Celaya (8,065), Salamanca (4,739), Guanajuato (4,647), San Miguel de Allende (3,831), Dolores Hidalgo Cuna de la Independencia Nacional (2,201), San Francisco del Rincón (1,883), Valle de Santiago (1,724), y Pénjamo (1,466).",
                               style={'font-size': 14, "font-family":"Arial", "text-align":"justify" }),
                        ]), style={"background-color":"white",
                          "box-shadow": "10px 20px 30px black",
@@ -608,13 +607,11 @@ body = html.Div([
     html.Br(),
     
                 dbc.Row([
-          dbc.Col(dbc.Button(([html.P("Nuevo León", style={"font-size": 30,"color": "black","background-color": "white"}),
-                       dbc.CardImg(src="https://github.com/fdealbam/Aborto/blob/main/application/static/nl.jpeg?raw=true"),
+          dbc.Col(dbc.Button(([html.P("Jalisco", style={"font-size": 30,"color": "black","background-color": "white"}),
+                       dbc.CardImg(src="https://github.com/fdealbam/Lesiones/blob/main/application/static/jal.jpeg?raw=true"),
     
                        html.P(
-                           "Los 10 municipios con más aborto fueron: Monterrey (65), Juárez (58), García (55), Guadalupe (49),"
-                           " Apodaca (39), Santa Catarina (18), Cadereyta Jiménez (15), San Nicolás de los Garza (14),"
-                           " Pesquería (11) y San Pedro Garza García (10).",
+                           "Los diez municipios con más lesiones fueron: Guadalajara (17,813), Zapopan (11,560), Tlajomulco de Zúñiga (6,009), Tonalá (5,213), Puerto Vallarta (3,286), El Salto (2,012), Lagos de Moreno (1,894), Tepatitlán de Morelos (1,541), Ocotlán (1,201), y Zapotlán el Grande (1,160).",
                            style={'font-size': 14, "font-family":"Arial", "text-align":"justify" }),
                ]), style={"background-color":"white",
                          "box-shadow": "10px 20px 30px black",
@@ -624,14 +621,13 @@ body = html.Div([
                          }, disabled=True)),
                        
                dbc.Col(dbc.Button(([html.P("Baja California", style={"font-size": 30,"color": "black","background-color": "white"}),
-                       dbc.CardImg(src="https://github.com/fdealbam/Aborto/blob/main/application/static/bc.jpeg?raw=true"),
+                       dbc.CardImg(src="https://github.com/fdealbam/Lesiones/blob/main/application/static/bc.jpeg?raw=true"),
                      html.Br(),
                                      html.Br(),
                                      html.Br(),
                                    
                         html.P(
-                          "Los 5 municipios con más aborto fueron: Mexicali (144), Ensenada (87), Tijuana (40), "
-                            "Tecate (37) y Playas de Rosarito (28).",
+                          "Los cinco municipios con más lesiones fueron: Tijuana (32,735), Mexicali (23,315), Ensenada (7,392), Playas de Rosarito (1,977), Tecate (1,975)",
                            style={'font-size': 14, "font-family":"Arial", "text-align":"justify" }),
                ]), style={"background-color":"white",
                          "box-shadow": "10px 20px 30px black",
