@@ -55,6 +55,7 @@ year18= fem[fem.Año == 2018]
 year19= fem[fem.Año == 2019]
 year20= fem[fem.Año == 2020]
 year21= fem[fem.Año == 2021]
+year22= fem[fem.Año == 2022]
 
 ############################################### Agregar suffix de años
 
@@ -86,18 +87,20 @@ y21= year21.add_suffix('21')
 y21.rename(columns ={'Año21': 'Año', 'Tipo de delito21': 'Tipo de delito','Unnamed: 021' : 'Unnamed: 0',
                             'Entidad21': 'Entidad'}, inplace = True)
 
-
+y22= year22.add_suffix('22')
+y22.rename(columns ={'Año22': 'Año', 'Tipo de delito22': 'Tipo de delito','Unnamed: 022' : 'Unnamed: 0',
+                            'Entidad22': 'Entidad'}, inplace = True)
 
 ############################################### Concat todos los años
-
 fa = y15.merge(y16, on="Entidad",  how="inner")
 fb = fa.merge(y17, on="Entidad",  how="inner")
 fc = fb.merge(y18, on="Entidad",  how="inner")
 fd = fc.merge(y19, on="Entidad",  how="inner")
 fe = fd.merge(y20, on="Entidad",  how="inner")
 ff = fe.merge(y21, on="Entidad",  how="inner")
+fg = ff.merge(y22, on="Entidad",  how="inner")
                     
-femi15_21 = ff[[
+femi15_21 = fg[[
  'Entidad','Enero15','Febrero15','Marzo15','Abril15','Mayo15','Junio15',
  'Julio15','Agosto15','Septiembre15','Octubre15','Noviembre15','Diciembre15',
  
@@ -116,8 +119,11 @@ femi15_21 = ff[[
  'Enero20','Febrero20','Marzo20','Abril20','Mayo20','Junio20','Julio20',
  'Agosto20','Septiembre20','Octubre20','Noviembre20','Diciembre20',
     
- 'Enero21','Febrero21','Marzo21','Abril21','Mayo21','Junio21',#'Julio21',
-# 'Agosto21','Septiembre21','Octubre21','Noviembre21','Diciembre21'
+ 'Enero21','Febrero21','Marzo21','Abril21','Mayo21','Junio21','Julio21',
+ 'Agosto21','Septiembre21','Octubre21','Noviembre21','Diciembre21',
+    
+ 'Enero22','Febrero22','Marzo22','Abril22','Mayo22','Junio22',#'Julio22',
+ #'Agosto22','Septiembre22','Octubre22','Noviembre22','Diciembre22',
              ]]
 
 
@@ -141,12 +147,14 @@ femi15_21['Total2019']= femi15_21[[ 'Enero19', 'Febrero19', 'Marzo19', 'Abril19'
 femi15_21['Total2020']= femi15_21[[ 'Enero20', 'Febrero20', 'Marzo20', 'Abril20', 'Mayo20',
                                'Junio20', 'Julio20', 'Agosto20', 'Septiembre20', 'Octubre20',
                                'Noviembre20', 'Diciembre20',]].sum(axis=1)
-
 femi15_21['Total2021']= femi15_21[[ 'Enero21','Febrero21', 'Marzo21', 'Abril21', 'Mayo21',
-                                   'Junio21',#'Julio21','Agosto21','Septiembre21','Octubre21',
-                                   #'Noviembre21','Diciembre21'
+                                   'Junio21','Julio21','Agosto21','Septiembre21','Octubre21',
+                                   'Noviembre21','Diciembre21'
                                   ]].sum(axis=1)
-
+femi15_21['Total2022']= femi15_21[[  'Enero22','Febrero22','Marzo22','Abril22','Mayo22',
+                                   'Junio22',#'Julio22','Agosto22','Septiembre22','Octubre22',
+                                   #'Noviembre22','Diciembre22'
+                                  ]].sum(axis=1)
 
 #identificadores
 conf_2015= femi15_21.Total2015.sum().astype(int)
@@ -156,11 +164,11 @@ conf_2018= femi15_21.Total2018.sum().astype(int)
 conf_2019= femi15_21.Total2019.sum().astype(int)
 conf_2020= femi15_21.Total2020.sum().astype(int)
 conf_2021= femi15_21.Total2021.sum().astype(int)
-
+conf_2022= femi15_21.Total2022.sum().astype(int)
 
 
 ################################################## PREPARA GRAFICA MENSUAL
-pagra = ff[[
+pagra = fg[[
   'Enero15', 'Febrero15', 'Marzo15', 'Abril15', 'Mayo15', 'Junio15', 'Julio15', 'Agosto15', 
     'Septiembre15', 'Octubre15', 'Noviembre15', 'Diciembre15',
  
@@ -178,8 +186,11 @@ pagra = ff[[
  'Enero20', 'Febrero20', 'Marzo20', 'Abril20', 'Mayo20', 'Junio20', 'Julio20', 'Agosto20',
     'Septiembre20','Octubre20', 'Noviembre20', 'Diciembre20',
 
- 'Enero21', 'Febrero21', 'Marzo21','Abril21', 'Mayo21', 'Junio21',# 'Julio21', 'Agosto21',
-  #  'Septiembre21','Octubre21','Noviembre21','Diciembre21'
+ 'Enero21', 'Febrero21', 'Marzo21','Abril21', 'Mayo21', 'Junio21', 'Julio21', 'Agosto21',
+   'Septiembre21','Octubre21','Noviembre21','Diciembre21',
+    
+     'Enero22','Febrero22','Marzo22','Abril22','Mayo22','Junio22',#'Julio22',
+ #'Agosto22','Septiembre22','Octubre22','Noviembre22','Diciembre22'
             ]]
 
 
@@ -322,7 +333,11 @@ graf_totfem.update_layout(
   #  height=600
     )
 
-
+total15_21 = junto15_21[['Total2015','Total2016','Total2017','Total2018','Total2019','Total2020','Total2021']].sum().sum()
+promanual = round(total15_21/7,1)
+promanualb = f"{int(round(total15_21/7,0)):,}"
+prom_day = f"{int(round(total15_21/(365*7),0)):,}"
+prom_hour = f"{int(round(total15_21/(12*365*7),0)):,}"
 
 
 
@@ -353,7 +368,7 @@ body = html.Div([
             
            dbc.Col(html.H5(" Centro de Estudios Sociales y de Opinión Pública," 
                            " Cámara de Diputados"
-                           " México, 2021 "),
+                           " México, 2022 "),
                   width={'size': 3, 'offset': 0}),
                ], justify="end",),
             
@@ -393,10 +408,10 @@ body = html.Div([
                     "Las lesiones son una forma de violencia de género, al igual que en el caso de los homicidios, "
                     "las lesiones pueden ser dolosas (intencionales) o culposas (no intencionales); en el caso de las primeras, "
                     "constituyen otro de los rostros de la violencia que se vive en el país."
-                    "Entre los años 2015 y 2021, se ha registrado un promedio anual de (X) víctimas de lesiones dolosas en el país,"
-                    " teniendo la cifra más alta en el (año), con (x) víctimas, y la más baja en (año), con (x) víctimas ."
-                    " Esas cifras implican, para todo el periodo, un promedio diario de (x) casos por día o prácticamente "
-                    "(x) víctimas de lesiones dolosas cada hora. Esto sin considerar todos aquellos casos en que no se presenta "
+                    "Entre los años 2015 y 2021, se ha registrado un promedio anual de "+str(promanualb)+" víctimas de lesiones dolosas en el país,"
+                    " teniendo la cifra más alta en el 2019, con 210,546 víctimas, y la más baja en 2020, con 182,000 víctimas ."
+                    " Esas cifras implican, para todo el periodo, un promedio diario de "+str(prom_day)+" casos por día o prácticamente "
+                    +str(prom_hour)+" víctimas de lesiones dolosas cada hora. Esto sin considerar todos aquellos casos en que no se presenta "
                     "querella o que no procede la denuncia ante el ministerio público."
                      "" 
                     "además, son problemas aún irresueltos y son tema central de la " 
@@ -534,7 +549,7 @@ body = html.Div([
                        dbc.Badge("mensuales", color="info", className="mr-1")]), 
                                        width={'size': 11,  "offset":1 })]),
        dbc.Row([        
-               dbc.Col(html.H5("(hasta junio 2021)"),
+               dbc.Col(html.H5("(hasta junio 2022)"),
                                        width={ 'size': 3, "offset":1 }),
 
             ]),
@@ -714,7 +729,7 @@ body = html.Div([
                     "de vital importancia en la vida política. "
                     "La metodología que hemos empleado para analizar los datos la detallamos enseguida. "
                     "Como se indica en cada caso, la información sobre el delito aborto "
-                    "fue obtenida del Secretariado Ejecutivo Nacional del Sistema Nacional de Seguridad Pública (SENSNSP) (2015-2021); "
+                    "fue obtenida del Secretariado Ejecutivo Nacional del Sistema Nacional de Seguridad Pública (SENSNSP) (2015-2022); "
                     " "
                     "Este dashboard seguramente será completado progresivamente con otras fuentes de información "
                     "tanto gubernamental, como aquella proveniente de organizaciones civiles que " 
@@ -752,7 +767,7 @@ body = html.Div([
             
            dbc.Col(html.H5(" Centro de Estudios Sociales y de Opinión Pública," 
                            " Cámara de Diputados"
-                           " México, 2021 "),
+                           " México, 2022 "),
                   width={'size': 3, 'offset': 0}),
                ], justify="start",),
             
@@ -777,8 +792,8 @@ app.layout = html.Div([body],
                                     "background-color": "lightgray"}
                                     )
 
-from application.dash import app
-from settings import config
+#from application.dash import app
+#from settings import config
 
 if __name__ == "__main__":
     app.run_server()
