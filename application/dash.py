@@ -527,6 +527,15 @@ body = html.Div([
                          
                         'width': '210px'
                          }, disabled=True)),
+               dbc.Col(dbc.Button(([html.H5("2022", style={"font-size": 18,"color": "black","background-color": "white"}),
+                                    html.H1([str(f"{conf_2022:,d}")],style={"font-size": 40, "color": "black","background-color": "white"}),
+                                    dbc.CardImg(src="https://github.com/fdealbam/Lesiones/blob/main/application/static/Mapa%20lesiones%20Total2021.png?raw=true",
+                                                 style={"background-color":"white"}),
+               ]), style={"background-color":"white",
+                         "box-shadow": "10px 20px 30px black",
+                         
+                        'width': '210px'
+                         }, disabled=True)),
                                                         ]),
     
 
